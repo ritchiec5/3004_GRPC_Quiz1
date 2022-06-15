@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+service template {
+    rpc unary_rpc (HelloRequest) returns (Goodbye_reply) {}
+
+    rpc server_streaming_rpc (HelloRequest) returns (stream Goodbye_stream) {}
+
+    rpc client_streaming_rpc (stream HelloStream) returns (Goodbye_reply) {}
+    
+    rpc bidirectional_streaming_rpc (stream HelloStream) returns (stream Goodbye_stream) {}
+
+    rpc repeated_rpc (HelloRepeated) returns (Goodbye_reply) {}
+}
+
+message HelloRequest {
+    string HelloRequest = 1;
+    string name = 2;
+}
+
+message Goodbye_reply {
+    string Goodbye_reply = 1;
+}
+
+message HelloStream {
+    string HelloStream = 1;
+    string name = 2;
+}
+
+message Goodbye_stream {
+    string Goodbye_stream = 1;
+}
+
+message HelloRepeated {
+    repeated string HelloRepeated = 1; //Repeated allows passing of array
+}
