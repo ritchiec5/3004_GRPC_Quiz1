@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+service bookreview {
+    rpc create_review(review) returns (review_reponse){}
+
+    rpc retrieve(retrieval) returns (retrieve_reponse){}
+
+    rpc query(queries) returns (review){}
+
+
+}
+
+message review {
+    string bookname = 1;
+    string review = 2;
+}
+
+message review_reponse {
+    string review_reponse = 1;
+}
+
+
+message retrieval {
+    string retrieve = 1;
+}
+
+message retrieve_reponse {
+    repeated string booklist = 1; 
+}
+
+message queries {
+    string query = 1;
+}
